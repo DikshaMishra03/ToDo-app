@@ -1,12 +1,22 @@
 // ─────────────── FIREBASE SETUP ───────────────
-import { initializeApp } from 'firebase/app';
+// ─────────────── FIREBASE SETUP ───────────────
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
 import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from 'firebase/auth';
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD7NAR2Y0cJ-4qXH0_kvg0Ge5RigvrK0Og",
@@ -19,7 +29,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
+const db = getFirestore(app);
 // ─────────────── STATE ───────────────
 let currentUser = null;
 let tasks = [];
